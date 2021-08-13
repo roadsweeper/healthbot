@@ -1,6 +1,25 @@
 import schedule
 import time
 import datetime
+import discord
+from discord.ext import commands
+client = commands.Bot(command_prefix=("!"),
+                      case_insensitive=True,
+                      help_command=None)
+@client.event
+async def on_ready():
+    print("BOT IS READY")
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Playing your mother"))
+
+@client.command()
+async def orphan(ctx):
+    answers = [
+        "are you lost? should I call your parents?"
+        "i'll call your mum and dad, don't worry,"
+        "see  that kid over there? ask him about his parents,"
+        "do you want some candy?"
+    ]
+
 '''def job():
     print("I'm working...")
 
@@ -21,7 +40,7 @@ def task():
     print("Water Parade and Move About Time")
 
 
-
+print('git works on pycharm')
 print(datetime.datetime.now())
 
 def job():
