@@ -11,6 +11,7 @@ async def on_ready():
     print("BOT IS READY")
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Playing your mother"))
 
+
 @client.command()
 async def orphan(ctx):
     answers = [
@@ -19,6 +20,7 @@ async def orphan(ctx):
         "see  that kid over there? ask him about his parents,"
         "do you want some candy?"
     ]
+client.run('ODczMTYzNzU5MDg1MDI3MzM4.YQ0bHg.VTIWZdNSdquNnKTglf-2bRv0Cxc')
 
 '''def job():
     print("I'm working...")
