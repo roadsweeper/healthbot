@@ -64,7 +64,6 @@ newline = '\n'  # Avoids SyntaxError: f-string expr cannot include a backslash
 with open('token.txt', 'r') as file:
     myfile = f"{file.read().replace(newline, '')}".format(**locals())
 '''
-# client.run('ODczMTYzNzU5MDg1MDI3MzM4.YQ0bHg._YC3giVlbiR9d7tfHA1LX1VAnh8')
 '''def read_token():
     with open("token.txt"), "r") as file:
     myfile = file.readlines()
