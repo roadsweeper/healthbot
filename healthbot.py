@@ -23,7 +23,7 @@ async def on_ready():
     print("BOT IS READY")
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="your mother"))
 
-@client.event
+@client.event #THE ACTUAL CODE IS JUST LIKE A FEW LINES LOL
 async def on_message(message):
     if message.content.find("!hello") != -1:
         await message.channel.send("Hi")
@@ -41,7 +41,7 @@ async def on_message(message):
         myid = '<@&876859196006600774>'
         while True:
             # time period condition
-            if datetime.datetime.now().hour < 2 or datetime.datetime.now().hour > 8:
+            if datetime.datetime.now().hour < 24 or datetime.datetime.now().hour > 8:
                 '''if stopHour == datetime.datetime.now().hour and stopMinute == datetime.datetime.now().minute:
                     print('End' + str(datetime.datetime.now()))
                     await message.channel.send('End' + str(datetime.datetime.now()))'''
