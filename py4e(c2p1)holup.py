@@ -13,11 +13,11 @@ client = discord.Client()
 '''client = commands.Bot(command_prefix=("!"),
                       case_insensitive=True,
                       help_command=None)'''
-def read_token():
+'''def read_token():
     with open("token.txt", "r") as f:
         lines = f.readlines()
         return lines[0].strip()
-token = read_token()
+token = read_token()'''
 
 
 @client.event
@@ -51,7 +51,7 @@ async def on_message(message):
                     print("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()))
                     await message.channel.send("wake up and current time is: " + str(datetime.datetime.now()) + ('%s' % myid))
                     alarmMinute = (alarmMinute + 1) % 24
-
+client.run(os.environ['DISCORD_TOKEN'])
 
 '''intents = discord.Intents.default()
 intents.members = True
@@ -101,6 +101,6 @@ print(datetime.datetime.now())
         elif alarmHour == datetime.datetime.now().hour and alarmMinute == datetime.datetime.now().minute:
             print("wake up and current time is: " + str(datetime.datetime.now()))
             alarmMinute = alarmMinute + 1'''
-client.run(token)
+
 #schedule.every(4).minutes.do(job)
 
