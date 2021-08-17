@@ -62,7 +62,7 @@ async def on_message(message):
         return lines[0].strip()
 token = read_token()'''
 
-client.run[DISCORD_TOKEN]
+client.run(DISCORD_TOKEN)
 '''intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)'''
