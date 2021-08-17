@@ -23,7 +23,7 @@ async def on_message(message):
 
     if message.content.find("!hello") != -1:
         await message.channel.send("Hi")
-        myid = '<@&876859196006600774>'
+        myid = '<@&870219262529249290>'
         await message.channel.send("wake up and current time is: " + str(datetime.datetime.now()))
         await message.channel.send(' : %s is the best ' % myid)
     if message.content.find("!time") != -1:
@@ -32,26 +32,32 @@ async def on_message(message):
     alarmMinute = datetime.datetime.now().hour
     stopSeconds = datetime.datetime.now().second
     stopMinute = datetime.datetime.now().minute + 3
-    myid = '<@&876859196006600774>'
+    myid = '<@&870219262529249290>'
     if message.content.find("!start") != -1:
         await message.channel.send(datetime.datetime.now())
         while True:
             if datetime.datetime.now().hour > 8 and datetime.datetime.now().hour < 24: # time period condition
             #if 24 >= datetime.datetime().hour >= 8
-                '''if stopHour == datetime.datetime.now().hour and stopMinute == datetime.datetime.now().minute:
+                if stopHour == datetime.datetime.now().hour and stopMinute == datetime.datetime.now().minute:
                     print('End' + str(datetime.datetime.now()))
-                    await message.channel.send('End' + str(datetime.datetime.now()))'''
+                    await message.channel.send('End' + str(datetime.datetime.now()))
                 if alarmMinute == datetime.datetime.now().hour:
                     print("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()))
                     await message.channel.send("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()) + ('%s' % myid))
                     alarmMinute = (alarmMinute + 1) % 24
-    if message.content.find("!startseconds") != -1:
-        await message.channel.send('This bot will send time now every ten seconds and ends in 3 minute from now')
-        if datetime.datetime.now().minute != stopMinute:
-            if stopSeconds == datetime.datetime.now().second:
-                print("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()))
-                await message.channel.send("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()) + ('%s' % myid))
-                stopSeconds = (stopSeconds + 10) % 60
+    if message.content.find("!startdemo") != -1:
+        await message.channel.send(datetime.datetime.now())
+        while True:
+            if datetime.datetime.now().minute > 53 and datetime.datetime.now().minute < 55:  # time period condition
+                # if 24 >= datetime.datetime().hour >= 8
+                '''if stopHour == datetime.datetime.now().hour and stopMinute == datetime.datetime.now().minute:
+                    print('End' + str(datetime.datetime.now()))
+                    await message.channel.send('End' + str(datetime.datetime.now()))'''
+                if alarmSeconds == datetime.datetime.now().minute:
+                    print("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()))
+                    await message.channel.send("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()) + ('%s' % myid))
+                    alarmSeconds = (alarmSeconds + 1) % 60
+
             #stopHour = (stopHour + 1/6)
         #if message.content.find("!stopstartseconds") != -1 or stopHour == stopMinute:
         #    await message.channel.send('Stopping...')
@@ -60,8 +66,8 @@ async def on_message(message):
     with open("token.txt", "r") as f:
         lines = f.readlines()
         return lines[0].strip()
-token = read_token()''' #local so called env
-
+token = read_token() #local so called env
+client.run(token)'''
 client.run(os.environ['DISCORD_TOKEN']) #heroku env
 '''intents = discord.Intents.default()
 intents.members = True
