@@ -60,9 +60,9 @@ async def on_message(message):
     with open("token.txt", "r") as f:
         lines = f.readlines()
         return lines[0].strip()
-token = read_token()'''
+token = read_token()''' #local so called env
 
-client.run(os.environ['DISCORD_TOKEN'])
+client.run(os.environ['DISCORD_TOKEN']) #heroku env
 '''intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)'''
