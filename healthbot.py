@@ -2,15 +2,16 @@ import time
 import datetime
 import discord
 from discord.ext import commands
+from discord.ext import tasks
 import os
 
 client = discord.Client()
 
 
 
-'''client = commands.Bot(command_prefix=("!"),
+bot = commands.Bot(command_prefix=("$"),
                       case_insensitive=True,
-                      help_command=None)'''
+                      help_command=None)
 
 
 @client.event
@@ -18,45 +19,78 @@ async def on_ready():
     print("BOT IS READY")
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="your mother"))
 
+looping = False
 @client.event #THE ACTUAL CODE IS JUST LIKE A FEW LINES LOL
 async def on_message(message):
-
+    if message.author == client.user:
+        return
     if message.content.find("!hello") != -1:
-        await message.channel.send("Hi")
+        await message.channel.send("Hi, !helphealthbot to see 3 commands")
         myid = '<@&870219262529249290>'
         await message.channel.send("wake up and current time is: " + str(datetime.datetime.now()))
         await message.channel.send(' : %s is the best ' % myid)
     if message.content.find("!time") != -1:
         await message.channel.send(datetime.datetime.now())
-    alarmSeconds = datetime.datetime.now().minute
-    alarmMinute = datetime.datetime.now().hour
+    if message.content.find("!helphealthbot") != -1:
+        await message.channel.send('!hello = "hi", !time = timenow, !start to start but doesn\'t know when to stop. Can thank ghost for the if True, while time in between x and y that other commands work')
+    alarmSeconds = datetime.datetime.now().second
+    alarmMinute = datetime.datetime.now().minute
     stopSeconds = datetime.datetime.now().second
     stopMinute = datetime.datetime.now().minute + 3
+    alarmHour = datetime.datetime.now().hour
     myid = '<@&870219262529249290>'
+    global looping
     if message.content.find("!start") != -1:
         await message.channel.send(datetime.datetime.now())
+        looping = True
+        if True:
+            #while datetime.datetime.now().minute > 32 or datetime.datetime.now().minute < 20:  # time period condition
+            while datetime.datetime.now().hour > 9 or datetime.datetime.now().hour < 24:
+                # if 24 >= datetime.datetime().hour >= 8
+                if alarmHour == datetime.datetime.now().hour:
+                    print('End' + str(datetime.datetime.now()))
+                    await message.channel.send('End' + str(datetime.datetime.now()))
+                    alarmHour = (alarmHour + 1) % 24
+                '''if alarmMinute == datetime.datetime.now().second:
+                    print("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()))
+                    await message.channel.send(datetime.datetime.now())
+                    alarmMinute = (alarmMinute + 10) % 60'''
+            if message.content.find("$lol") != -1:
+                await message.channel.send("stopping " + str(datetime.datetime.now()))
+                looping = False
+
+
+                # if message.content == '!stop':
+                #     print('stop')
+                #     await message.channel.send("stop")
+                #     break
+    '''if message.content.find("!startdemo") != -1:
+        await message.channel.send(datetime.datetime.now())
         while True:
-            if datetime.datetime.now().hour > 8 and datetime.datetime.now().hour < 24: # time period condition
-            #if 24 >= datetime.datetime().hour >= 8
+            if datetime.datetime.now().minute > 10 and datetime.datetime.now().minute < 15:  # time period condition
+                # if 24 >= datetime.datetime().hour >= 8
                 if stopHour == datetime.datetime.now().hour and stopMinute == datetime.datetime.now().minute:
                     print('End' + str(datetime.datetime.now()))
                     await message.channel.send('End' + str(datetime.datetime.now()))
-                if alarmMinute == datetime.datetime.now().hour:
+                if alarmSeconds == datetime.datetime.now().second:
                     print("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()))
                     await message.channel.send("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()) + ('%s' % myid))
-                    alarmMinute = (alarmMinute + 1) % 24
+                    alarmSeconds = (alarmSeconds + 10) % 60'''
+'''@client.event
+async def on_message(message):
+    global alarmSeconds
     if message.content.find("!startdemo") != -1:
         await message.channel.send(datetime.datetime.now())
         while True:
-            if datetime.datetime.now().minute > 53 and datetime.datetime.now().minute < 55:  # time period condition
+            if datetime.datetime.now().minute > 10 and datetime.datetime.now().minute < 15:  # time period condition
                 # if 24 >= datetime.datetime().hour >= 8
-                '''if stopHour == datetime.datetime.now().hour and stopMinute == datetime.datetime.now().minute:
+                if stopHour == datetime.datetime.now().hour and stopMinute == datetime.datetime.now().minute:
                     print('End' + str(datetime.datetime.now()))
-                    await message.channel.send('End' + str(datetime.datetime.now()))'''
-                if alarmSeconds == datetime.datetime.now().minute:
+                    await message.channel.send('End' + str(datetime.datetime.now()))
+                if alarmSeconds == datetime.datetime.now().second:
                     print("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()))
                     await message.channel.send("Water Parade and Move About Time and current time is: " + str(datetime.datetime.now()) + ('%s' % myid))
-                    alarmSeconds = (alarmSeconds + 1) % 60
+                    alarmSeconds = (alarmSeconds + 10) % 60'''
 
             #stopHour = (stopHour + 1/6)
         #if message.content.find("!stopstartseconds") != -1 or stopHour == stopMinute:
